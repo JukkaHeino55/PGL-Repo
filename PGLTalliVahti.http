@@ -1,0 +1,6 @@
+@PGLTalliVahti_HostAddress = http://localhost:5148
+
+GET {{PGLTalliVahti_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
