@@ -1,0 +1,35 @@
+body {
+  background-color: black;
+}
+
+hr {
+  color: gray;
+}
+
+.yellowText {
+  color: yellow;
+}
+
+.otsikko1 {
+  color: #fff;
+  font-family: arial;
+  font-size: 20px;
+  position: relative;
+  top: -10px;
+  text-align: center;
+}
+.container{
+    -js-display: flex; 
+    display: flex;
+    flex-wrap: wrap; 
+
+  }
+
+.item{
+  height: 100px;
+  width: 100px;
+  background-color: gray;
+  border:solid 1px #000;
+  margin: 5px;
+}
+
