@@ -1,0 +1,34 @@
+#1. kenttä on jäsennumero
+#2. kenttä on nimi joka näytetään selaimessa
+#3+. kenttä on kommenttia
+#Rivin alkuun # jos kommentti
+#Erotinmerkki on puolipiste
+#Esitysjärjestys on se missä järjestyksessä rivit on tässä esitetty.
+#jäsennumerojen ei tarvitse olla peräkkäisessä järjestyksessä, mutta tuplia ei saa olla.
+#--------------------------------------------------
+101;Daniel
+122;Elias
+102;Heikki
+103;Jari
+104;Jarno
+105;Joona
+106;Jouko
+107;Juho
+108;Jukka
+109;LauriHa
+110;LauriHi
+111;Mikko
+112;Minja
+113;NikoK
+114;NikoL
+115;Pasi
+116;Sami
+117;Tuomas
+118;Veli-Pekka
+119;VilleH
+120;VilleK
+121;VilleP
+901;Vieras 1
+902;Vieras 2+
+#--------------------------------------------------
+#Tämä tiedoxto loppuu tähän

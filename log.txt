@@ -1,0 +1,95 @@
+01;20250706172207;Program start
+02;20250706172440;Program end
+01;20250706172451;Program start
+02;20250706172623;Program end
+01;20250706172632;Program start
+02;20250706172841;Program end
+01;20250706172849;Program start
+02;20250706195508;Program end
+01;20250706235352;Program start
+10;20250706235635;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+Received request: {"id":103,"operation":"1","states":"01010"}
+Received request: {"id":105,"operation":"1","states":"01110"}
+Received request: {"id":105,"operation":"0","states":"01010"}
+02;20250707000704;Program end
+01;20250707003352;Program start
+10;20250707003433;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+10;20250707004349;Pelaajat kutsuttu
+Received request: {"id":102,"operation":"1","states":"00001"}
+Received request: {"id":102,"operation":"0","states":"00000"}
+02;20250707012513;Program end
+01;20250707012527;Program start
+02;20250707012617;Program end
+01;20250707012625;Program start
+02;20250707012934;Program end
+01;20250707012942;Program start
+10;20250707012956;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+Received request: {"id":103,"operation":"1","states":"01010"}
+Received request: {"id":103,"operation":"0","states":"00010"}
+02;20250707014559;Program end
+01;20250707015337;Program start
+10;20250707015403;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+Received request: {"id":103,"operation":"1","states":"01010"}
+02;20250707024321;Program end
+01;20250707024344;Program start
+02;20250707024350;Program end
+01;20250707024413;Program start
+Received request: {"id":102,"operation":"1","states":"01011"}
+Received request: {"id":101,"operation":"1","states":"11011"}
+Received request: {"id":105,"operation":"1","states":"11111"}
+02;20250707025558;Program end
+01;20250707025617;Program start
+Received request: {"id":105,"operation":"0","states":"11011"}
+Received request: {"id":102,"operation":"0","states":"11010"}
+02;20250707031210;Program end
+01;20250707031648;Program start
+02;20250707031651;Program end
+01;20250707032109;Program start
+10;20250707032133;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+10;20250707032630;Pelaajat kutsuttu
+Received request: {"id":105,"operation":"1","states":"00100"}
+10;20250707032832;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+10;20250707033023;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+02;20250707033634;Program end
+01;20250707033642;Program start
+10;20250707033731;Pelaajat kutsuttu
+Received request: {"id":107,"operation":"1","states":"00010"}
+Received request: {"id":103,"operation":"1","states":"01010"}
+Received request: {"id":107,"operation":"0","states":"01000"}
+10;20250707034501;Pelaajat kutsuttu
+Received request: {"id":105,"operation":"1","states":"00100"}
+Received request: {"id":107,"operation":"1","states":"01010"}
+Received request: {"id":107,"operation":"1","states":"00110"}
+Received request: {"id":101,"operation":"1","states":"11010"}
+Received request: {"id":105,"operation":"1","states":"11110"}
+Received request: {"id":102,"operation":"1","states":"11111"}
+10;20250707041841;Pelaajat kutsuttu
+10;20250707041851;Pelaajat kutsuttu
+10;20250707041916;Pelaajat kutsuttu
+02;20250707041923;Program end
+01;20250707041935;Program start
+10;20250707041944;Pelaajat kutsuttu
+Received request: {"id":108,"operation":"1","states":"0000000010000000000000"}
+Received request: {"id":121,"operation":"1","states":"0000000010000000000001"}
+Received request: {"id":114,"operation":"1","states":"0000000010000010000001"}
+Received request: {"id":112,"operation":"1","states":"0000000010001010000001"}
+Received request: {"id":109,"operation":"1","states":"0000000011001010000001"}
+Received request: {"id":108,"operation":"0","states":"0000000001001010000001"}
+Received request: {"id":117,"operation":"1","states":"0000000001001010010001"}
+02;20250707042452;Program end
+01;20250707042458;Program start
+10;20250707042509;Pelaajat kutsuttu
+10;20250707043941;Pelaajat kutsuttu
+Received request: {"id":105,"operation":"1","states":"000001000000000000000000"}
+Received request: {"id":112,"operation":"1","states":"000001000000100000000000"}
+Received request: {"id":121,"operation":"1","states":"000001000000100000000100"}
+Received request: {"id":902,"operation":"1","states":"000001000000100000000101"}
+Received request: {"id":101,"operation":"1","states":"100001000000100000000101"}
+02;20250707045334;Program end
