@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PGL kohteessa</title>/title>
+    <link rel="stylesheet" href="styles.css" /> 
+    <script src="script.js" defer></script>
+    <!-- 
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+     -->
+  </head>
+  <body>
+
+    <div class="otsikko1">OLETKO PAIKALLA
+        <span style="float:right">
+        <input type="button" value="REFRESH" onclick="RefreshPainettu();"/>
+        <input type="button" value="LOKI" onclick="lokiPainettu();"/>
+        </span>
+    </div>
+    <hr />
+    <section class="container" id="container">
+<!--        <div id="item1" class="item content1" onclick="myFunc(1);"><h1>Aku<br />Ankka</h1></div> -->
+<!--        <div id="item2" class="item content2" onclick="myFunc(2);"><h1>Mikki<br />Hiiri</h1></div> --> 
+      <div id="container1" class="container"></div>
+      <div id="container2" class="container" style="display: none">
+          <div class="yellowText">
+<table>
+  <thead>
+    <tr>
+      <th align="left">Päivä</th>
+      <th align="left">Aika</th>
+      <th align="left">Toiminta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12.12.2025</td>
+      <td>16:23:34</td>
+      <td>JukkaH saapui</td>
+    </tr>
+    <tr>
+      <td>12.12.2025</td>
+      <td>17:15:34</td>
+      <td>JukkaH poistui</td>
+    </tr>
+  </tbody>
+</table>
+          </div></div>
+    </section>
+    <hr />
+  </body>
+</html>
