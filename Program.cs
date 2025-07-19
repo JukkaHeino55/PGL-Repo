@@ -1,5 +1,7 @@
-using System.Text.Json;
+using System;
 using System.IO;
+using System.Linq;
+using System.Text.Json;
 
 
     var builder = WebApplication.CreateBuilder(args);
@@ -30,36 +32,86 @@ using System.IO;
   app.MapGet("/", () =>
   {
     Console.WriteLine("BBBBBB");
-    return "Hello World!";
+    return "Hello from PGLTalliVahti";
     // ToDo: API on toiminnassa + json - kellonaika - versio - started at
   });
-    
-  app.MapPut("/Tapahtuma", async (HttpContext context) =>
+
+app.MapPut("/Tapahtuma", async (HttpContext context) =>
+{
+using var reader = new StreamReader(context.Request.Body);
+var requestBody = await reader.ReadToEndAsync(); // Read the request body
+Console.WriteLine($"Received request: {requestBody}");
+MyNamespace.MyClass.MyProperty += "Tapahtuma";
+Console.WriteLine(MyNamespace.MyClass.MyProperty);
+Console.WriteLine($"Received request: {requestBody}");
+
+string states = JsonDocument.Parse(requestBody).RootElement.GetProperty("states").GetString();
+
+
+  string content = File.ReadAllText("states.txt");
+  int index3 = -1;
+  int index2 = 0;
+string changedId = "" + JsonDocument.Parse(requestBody).RootElement.GetProperty("id").ToString();
+
+
+  Console.WriteLine($"Tähän testataan: {changedId}");
+
+  string jasen = "UNKNOWN";
+  foreach (var entry in MyNamespace.MyClass.Jasenet)
   {
-      using var reader = new StreamReader(context.Request.Body);
-      var requestBody = await reader.ReadToEndAsync(); // Read the request body
-      Console.WriteLine($"Received request: {requestBody}");
-      MyNamespace.MyClass.MyProperty += "Tapahtuma";
-      Console.WriteLine(MyNamespace.MyClass.MyProperty);
-      // write to file
-    using var writer = new StreamWriter("log.txt", append: true);
-      writer.WriteLine($"Received request: {requestBody}");
+    if (entry[0] == changedId)
+    {
+      index3 = index2;
+      jasen = entry[1];
+      break;
+    }
+    index2++;
+  }
 
-      //JH 20250707
-      //---
-//      using var doc = JsonDocument.Parse(requestBody);
-    
-      string states = JsonDocument.Parse(requestBody).RootElement.GetProperty("states").GetString();
-      storeStates(states);
+  if (index3 != -1) {
+    Console.WriteLine("Match");
+  } else {
+      Console.WriteLine("No Match");
+    }
 
+  string modified = content;
+  string actionToDo = "X";
+  if (index3 != -1)
+  {
+    actionToDo = "" + JsonDocument.Parse(requestBody).RootElement.GetProperty("operation").ToString();
+    Console.WriteLine("Action to do = " + actionToDo);
 
-      // Set a variable to the Documents path.
+    string tmpStr = actionToDo;
+    if (tmpStr == "3") tmpStr = "0";
+    modified = content.Remove(index3, 1).Insert(index3, tmpStr);
+  }
+  else
+  {
+    Console.WriteLine("NOT OK");
+  }
 
-      // Write the text to a new file named "WriteFile.txt".
-      // Tämä tyhjentää tiedoston ennen kirjoitusta
-      //File.WriteAllText(Path.Combine(".", "WriteFile.txt"), requestBody);
+  storeStates(modified);
 
-      return Results.Ok("ok");
+  switch (actionToDo)
+  {
+    case "0":
+      WriteLog("30", jasen + " poistui");
+      break;
+    case "1":
+      WriteLog("31", jasen + " saapui");
+      break;
+    case "2":
+      WriteLog("32", jasen + " on tulossa");
+      break;
+    case "3":
+      WriteLog("33", jasen + " perui tulon");
+      break;
+    default:
+      WriteLog("39", jasen + "Virhe !!!");
+      break;
+  }
+
+  return Results.Ok("ok");
   });
 
 app.MapGet("/refresh", () =>
@@ -73,24 +125,65 @@ app.MapGet("/Pelaajat", () =>
   {
     string json = "[";
     string comma = "";
+    string paikallaStatus = File.ReadAllText("states.txt");
+
+    int index = 0;
+
     foreach (var entry in MyNamespace.MyClass.Jasenet)
     {
       Console.WriteLine($"Line {entry[0]}: {entry[1]}");
-      string record = $"{{\"id\": \"{entry[0]}\", \"nimi\": \"{entry[1]}\", \"paikalla\": \"0\"}}";
+      string paikalla = paikallaStatus.Substring(index,1);
+      string record = $"{{\"id\": \"{entry[0]}\", \"nimi\": \"{entry[1]}\", \"paikalla\": \"{paikalla}\"}}";
       json += comma + record;
       comma = ",";
+      index++;
     }
     json += "]";
 
     Console.WriteLine(json);
     Console.WriteLine("Pelaajat kutsuttu");
 
-    WriteLog("10", "Pelaajat kutsuttu");
-
     return json;
   });
 
-  Console.WriteLine("AAA");
+app.MapGet("/GetTapahtumat51Reverse", () =>
+{
+    string content = File.ReadAllText("log.txt");
+    return Results.Text(content);
+});
+
+app.MapGet("/ListaaTapahtumat/{count:int}/{direction:int}", (int count, int direction) =>
+{
+    string[] lines = File.ReadAllLines("log.txt");
+
+    IEnumerable<string> selected;
+
+    if (direction == 1 || direction == -1)
+    {
+        selected = lines.Take(count);
+    }
+    else if (direction == 2 || direction == -2)
+    {
+        selected = lines.Reverse().Take(count);
+    }
+    else
+    {
+        return Results.BadRequest("Direction must be 1, 2, -1, or -2");
+    }
+
+    if (direction < 0)
+    {
+        selected = selected.Reverse(); // reverse the selected records
+    }
+
+    string result = string.Join("\n", selected);
+    return Results.Text(result);
+});
+
+
+
+Console.WriteLine("Palvelu käynnistyi");
+  WriteLog("01", "Palvelu käynnistyi");
   app.UseCors(MyAllowSpecificOrigins);
   MyNamespace.MyClass.MyProperty = "Started";
   Console.WriteLine(MyNamespace.MyClass.MyProperty);
@@ -98,17 +191,10 @@ app.MapGet("/Pelaajat", () =>
   app.Run();
   MyNamespace.MyClass.MyProperty += "Ended";
   Console.WriteLine(MyNamespace.MyClass.MyProperty);
-  WriteLog("02", "Program end");
-
-  /*          foreach (var entry in MyNamespace.MyClass.Jasenet)
-            {
-                Console.WriteLine($"Line {entry[0]}: {entry[1]}");
-            }
-  */
+  WriteLog("02", "Palvelu lopetti");
 
 void HaeJasenet()
 {
-  WriteLog("01", "Program start");
 
   string filePath = "Jasenet.txt"; // Path to your file
   try

@@ -1,24 +1,43 @@
 var serverport = "localhost:5148";
 
 function myFunc(id) {
+  const queryString = window.location.search;
+  const URLParams = new URLSearchParams(queryString);
+  const rooli = URLParams.get("parm");
+
   const target = document.getElementById('item' + id);
-  let operation; // 0 = poistui ; 1 = saapui
+  let operation; // 0 = poistui ; 1 = saapui ; 2 = ilmoittautui; 3 = perui ilmoittautumisen
   let states = "";
 
-  if (target.style.backgroundColor === 'green') {
-    target.style.backgroundColor = 'gray';
-    operation = "0";
+  if (target.style.backgroundColor === 'green' || target.style.backgroundColor === 'yellow') {
+    if (target.style.backgroundColor === 'yellow' && rooli) {
+      target.style.backgroundColor = 'green';
+      operation = "1";
+    } else {
+      if (target.style.backgroundColor === 'yellow') {
+        // alert('OPERATION 3');
+        operation = "3";
+      } else {
+        operation = "0";
+      }
+      target.style.backgroundColor = 'gray';
+    }
   } else {
-    target.style.backgroundColor = 'green';
-    operation = "1";
+    target.style.backgroundColor = rooli ? 'green' : 'yellow';
+    operation = rooli ? "1" : "2";
   }
 
   const container = document.getElementById('container1');
   container.childNodes.forEach(node => {
     if (node.nodeType === Node.ELEMENT_NODE && node.id) {
-      states += node.style.backgroundColor === 'gray' ? "0" : "1";
-      // alert(node.id);
-      // console.log(node.style.backgroundColor);
+      let tila = "";
+      switch(node.style.backgroundColor) {
+        case 'gray': tila = "0"; break;
+        case 'green': tila = "1"; break;
+        case 'yellow': tila = "2"; break;
+        default: tila = "9";
+      }
+      states += tila;
     }
   });
 
@@ -28,8 +47,6 @@ function myFunc(id) {
     states
   };
 
-  alert(JSON.stringify(params, null, 2));
-
   const options = {
     method: 'PUT',
     body: JSON.stringify(params)
@@ -38,11 +55,16 @@ function myFunc(id) {
   fetch('http://' + serverport + '/Tapahtuma', options)
     .then(response => response.json())
     .then(response => {
-      // Do something with response.
+      init();
     });
+    
 }
 
 function addElement(container, id, link, paikalla) {
+  const queryString = window.location.search;
+  const URLParams = new URLSearchParams(queryString);
+  const rooli = URLParams.get("parm");
+
   const newElement = document.createElement("div");
   newElement.id = "item" + id;
   newElement.className = "item content" + id;
@@ -54,36 +76,88 @@ function addElement(container, id, link, paikalla) {
   container.appendChild(newElement);
 
   const target = document.getElementById('item' + id);
-  target.style.backgroundColor = paikalla === "1" ? 'green' : 'gray';
+  let vari;
+  switch(paikalla) {
+    case "0": vari = 'gray'; break;
+    case "1": vari = 'green'; break;
+    case "2": vari = 'yellow'; break;
+    default: vari = 'red';
+  }
+  target.style.backgroundColor = vari;
 }
 
 function lokiPainettu() {
-  alert("Painettu!");
+//  alert("Painettu!");
   const el1 = document.getElementById('container1');
   const el2 = document.getElementById('container2');
 
-  alert(el1.style.display);
+//  alert(el1.style.display);
 
   if (el1.style.display === "none") {
     el1.style.display = "";
     el2.style.display = "none";
   } else {
+    var table = document.getElementById("taulu");
     el1.style.display = "none";
     el2.style.display = "";
+
+
+    fetchRecords(table, 20, -2);
   }
+
+}
+
+function fetchRecords(table, count, direction) {
+
+    // Clear old rows except header
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+  
+  const url = 'http://' + serverport + `/ListaaTapahtumat/${count}/${direction}`;
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.text(); // we expect raw text
+    })
+    .then(data => {
+      const lines = data.split('\n'); // split into lines
+      lines.forEach((line, index) => {
+        console.log(`Line ${index + 1}: ${line}`);
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = line.slice(9, 11) + "." + line.slice(7, 9) + "." + line.slice(3, 7);
+        cell2.innerHTML = line.substring(11, 13) + ":" + line.substring(13, 15) + ":" + line.substring(15, 17);
+        cell3.innerHTML = line.slice(18);
+      });
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+    });
 }
 
 async function RefreshPainettu() {
-  alert("Refresh painettu");
+  const queryString = window.location.search;
+  const URLParams = new URLSearchParams(queryString);
+  const arvo = URLParams.get("parm");
 
   const response = await fetch('http://' + serverport + '/refresh');
   const text = await response.text();
-  alert(text);
+
+  init();
 }
 
 function init() {
   const container = document.getElementById('container1');
   let pelaajat;
+  const myNode = document.getElementById("container1");
+  while (myNode.lastElementChild) {
+    myNode.removeChild(myNode.lastElementChild);
+  }
 
   fetch('http://' + serverport + '/Pelaajat')
     .then(response => response.json())
@@ -98,9 +172,3 @@ function init() {
 
 init();
 
-/*
-ToDos:
-- Henkilön ID:tä ei tarvita selaimella. Pelkkä järjestys riittää tunnistukseen.
-  API tietää mikä on järjestyksessä n:nen henkilön id.
-  Koska nämä ovat feikki-id:tä, niin olkoon nyt kuitenkin mukana pilotointivaiheessa.
-*/

@@ -1,95 +1,63 @@
-01;20250706172207;Program start
-02;20250706172440;Program end
-01;20250706172451;Program start
-02;20250706172623;Program end
-01;20250706172632;Program start
-02;20250706172841;Program end
-01;20250706172849;Program start
-02;20250706195508;Program end
-01;20250706235352;Program start
-10;20250706235635;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-Received request: {"id":103,"operation":"1","states":"01010"}
-Received request: {"id":105,"operation":"1","states":"01110"}
-Received request: {"id":105,"operation":"0","states":"01010"}
-02;20250707000704;Program end
-01;20250707003352;Program start
-10;20250707003433;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-10;20250707004349;Pelaajat kutsuttu
-Received request: {"id":102,"operation":"1","states":"00001"}
-Received request: {"id":102,"operation":"0","states":"00000"}
-02;20250707012513;Program end
-01;20250707012527;Program start
-02;20250707012617;Program end
-01;20250707012625;Program start
-02;20250707012934;Program end
-01;20250707012942;Program start
-10;20250707012956;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-Received request: {"id":103,"operation":"1","states":"01010"}
-Received request: {"id":103,"operation":"0","states":"00010"}
-02;20250707014559;Program end
-01;20250707015337;Program start
-10;20250707015403;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-Received request: {"id":103,"operation":"1","states":"01010"}
-02;20250707024321;Program end
-01;20250707024344;Program start
-02;20250707024350;Program end
-01;20250707024413;Program start
-Received request: {"id":102,"operation":"1","states":"01011"}
-Received request: {"id":101,"operation":"1","states":"11011"}
-Received request: {"id":105,"operation":"1","states":"11111"}
-02;20250707025558;Program end
-01;20250707025617;Program start
-Received request: {"id":105,"operation":"0","states":"11011"}
-Received request: {"id":102,"operation":"0","states":"11010"}
-02;20250707031210;Program end
-01;20250707031648;Program start
-02;20250707031651;Program end
-01;20250707032109;Program start
-10;20250707032133;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-10;20250707032630;Pelaajat kutsuttu
-Received request: {"id":105,"operation":"1","states":"00100"}
-10;20250707032832;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-10;20250707033023;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-02;20250707033634;Program end
-01;20250707033642;Program start
-10;20250707033731;Pelaajat kutsuttu
-Received request: {"id":107,"operation":"1","states":"00010"}
-Received request: {"id":103,"operation":"1","states":"01010"}
-Received request: {"id":107,"operation":"0","states":"01000"}
-10;20250707034501;Pelaajat kutsuttu
-Received request: {"id":105,"operation":"1","states":"00100"}
-Received request: {"id":107,"operation":"1","states":"01010"}
-Received request: {"id":107,"operation":"1","states":"00110"}
-Received request: {"id":101,"operation":"1","states":"11010"}
-Received request: {"id":105,"operation":"1","states":"11110"}
-Received request: {"id":102,"operation":"1","states":"11111"}
-10;20250707041841;Pelaajat kutsuttu
-10;20250707041851;Pelaajat kutsuttu
-10;20250707041916;Pelaajat kutsuttu
-02;20250707041923;Program end
-01;20250707041935;Program start
-10;20250707041944;Pelaajat kutsuttu
-Received request: {"id":108,"operation":"1","states":"0000000010000000000000"}
-Received request: {"id":121,"operation":"1","states":"0000000010000000000001"}
-Received request: {"id":114,"operation":"1","states":"0000000010000010000001"}
-Received request: {"id":112,"operation":"1","states":"0000000010001010000001"}
-Received request: {"id":109,"operation":"1","states":"0000000011001010000001"}
-Received request: {"id":108,"operation":"0","states":"0000000001001010000001"}
-Received request: {"id":117,"operation":"1","states":"0000000001001010010001"}
-02;20250707042452;Program end
-01;20250707042458;Program start
-10;20250707042509;Pelaajat kutsuttu
-10;20250707043941;Pelaajat kutsuttu
-Received request: {"id":105,"operation":"1","states":"000001000000000000000000"}
-Received request: {"id":112,"operation":"1","states":"000001000000100000000000"}
-Received request: {"id":121,"operation":"1","states":"000001000000100000000100"}
-Received request: {"id":902,"operation":"1","states":"000001000000100000000101"}
-Received request: {"id":101,"operation":"1","states":"100001000000100000000101"}
-02;20250707045334;Program end
+01;20250719073117;Program start
+10;20250719073137;Pelaajat kutsuttu
+10;20250719073140;Pelaajat kutsuttu
+10;20250719073142;Pelaajat kutsuttu
+10;20250719073146;Pelaajat kutsuttu
+10;20250719073149;Pelaajat kutsuttu
+02;20250719075806;Program end
+01;20250719080255;Program start
+02;20250719080521;Program end
+01;20250719080557;Program start
+02;20250719081123;Program end
+01;20250719081143;Program start
+31;20250719081156;LauriHiSaapui
+10;20250719081156;Pelaajat kutsuttu
+30;20250719081158;LauriHiPoistui
+10;20250719081159;Pelaajat kutsuttu
+32;20250719081206;PasiIlmoittautui
+10;20250719081206;Pelaajat kutsuttu
+33;20250719081210;PasiPerui
+10;20250719081210;Pelaajat kutsuttu
+02;20250719102206;Program end
+01;20250719102228;Palvelu käynnistyi
+33;20250719104834;Jukka perui aikeen
+32;20250719104914;Jukka aikoo tulla
+30;20250719104937;Joona poistui
+30;20250719105416;Jari poistui
+32;20250719105419;Jari aikoo tulla
+32;20250719105530;LauriHi aikoo tulla
+30;20250719105609;Mikko poistui
+32;20250719105612;Mikko aikoo tulla
+32;20250719110829;Juho aikoo tulla
+33;20250719110836;Jukka perui aikeen
+30;20250719110843;VilleP poistui
+32;20250719110847;VilleK aikoo tulla
+32;20250719110848;VilleH aikoo tulla
+02;20250719111755;Palvelu lopetti
+01;20250719111811;Palvelu käynnistyi
+33;20250719123154;Heikki perui tulon
+33;20250719123217;Jari perui tulon
+32;20250719130338;Jukka on tulossa
+02;20250719130944;Palvelu lopetti
+01;20250719130951;Palvelu käynnistyi
+31;20250719131012;Jari saapui
+31;20250719131015;Jarno saapui
+30;20250719133501;Jouko poistui
+32;20250719133505;Jouko on tulossa
+33;20250719133513;Jouko perui tulon
+32;20250719133523;Jouko on tulossa
+33;20250719133529;Jouko perui tulon
+32;20250719133949;Jouko on tulossa
+32;20250719133952;NikoL on tulossa
+02;20250719135558;Palvelu lopetti
+01;20250719135610;Palvelu käynnistyi
+02;20250719135659;Palvelu lopetti
+01;20250719135705;Palvelu käynnistyi
+02;20250719135828;Palvelu lopetti
+01;20250719135834;Palvelu käynnistyi
+32;20250719140209;Johanna on tulossa
+33;20250719140211;Johanna perui tulon
+02;20250719141932;Palvelu lopetti
+01;20250719142138;Palvelu käynnistyi
+32;20250719142200;Jukka on tulossa
+02;20250719142222;Palvelu lopetti

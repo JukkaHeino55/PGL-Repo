@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net8.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/afdbd85f-a94d-4ca6-bb4d-9d743f92fc44/resourceGroups/PGL_RG/providers/Microsoft.Web/sites/PGLTalliVahti"
+}
