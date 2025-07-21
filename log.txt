@@ -61,3 +61,5 @@
 01;20250719142138;Palvelu käynnistyi
 32;20250719142200;Jukka on tulossa
 02;20250719142222;Palvelu lopetti
+01;20250721042743;Palvelu käynnistyi
+02;20250721042819;Palvelu lopetti
