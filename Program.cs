@@ -20,6 +20,7 @@ using System.Text.Json;
         policy.WithOrigins(
           "http://localhost",
           "http://www.poolgaragelappee.fi",
+          "https://jheino55.blob.core.windows.net",
           "null"
         )
         .WithMethods("PUT", "GET");;
@@ -32,7 +33,7 @@ using System.Text.Json;
   app.MapGet("/", () =>
   {
     Console.WriteLine("BBBBBB");
-    return "Hello from PGLTalliVahti";
+    return "Hello from PGLTalliVahti - Version: 0.2/20250729";
     // ToDo: API on toiminnassa + json - kellonaika - versio - started at
   });
 
@@ -101,13 +102,13 @@ string changedId = "" + JsonDocument.Parse(requestBody).RootElement.GetProperty(
       WriteLog("31", jasen + " saapui");
       break;
     case "2":
-      WriteLog("32", jasen + " on tulossa");
+      WriteLog("42", jasen + " on tulossa");
       break;
     case "3":
-      WriteLog("33", jasen + " perui tulon");
+      WriteLog("43", jasen + " perui tulon");
       break;
     default:
-      WriteLog("39", jasen + "Virhe !!!");
+      WriteLog("91", jasen + "Virhe !!!");
       break;
   }
 
@@ -233,7 +234,10 @@ void WriteLog(string tyyppi, string msg)
   // 01 = Ohjelman käynnistys
   // 02 = Ohjelman sammutus
   // 10 = Jäsenen tilan muutos
-  var aika = DateTime.Now.ToString("yyyyMMddHHmmss"); // case sensitive;
+  var finnishZone = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time");
+  var finnishTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, finnishZone);
+  var aika = finnishTime.ToString("yyyyMMddHHmmss");
+
     using var writer = new StreamWriter("log.txt", append: true);
       writer.WriteLine($"{tyyppi};{aika};{msg}");
   
